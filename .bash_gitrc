@@ -1,5 +1,21 @@
 alias   g='git'
 
+#Git Flow
+alias gff='git flow feature'
+alias gffs='gff start'
+alias gffp='gff publish'
+alias gfff='gff finish'
+
+#Basic Git Commands
+alias gb='git branch -vv'
+alias gc='git checkout'
+alias gf='git fetch --prune -v'
+alias gprune='git remote prune origin'
+alias gp='git pull'
+alias gr="git checkout --" #Git 'Revert'
+alias gs='git status'
+alias gu='git reset --soft HEAD~' #Undo commits made on current branch (preserve changes)
+
 # Git Repo Logging, Add '-{N}' to these commands to see the last N log entries
 # %C=color, %h=commitHash, %ad=AuthorDate, %d=ref names, %s=subject, %cn=committer name
 export gitFormat="%C(yellow)%h %Creset %ad%Cred%d  %Creset%s%Cblue [%cn]"
@@ -19,3 +35,5 @@ function gdr() { g diff "$1"^.."$1"; }
 
 #Get the long listing of a commit revision
 function glc() { gll "$1"^.."$1"; }
+
+
