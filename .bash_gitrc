@@ -1,0 +1,21 @@
+alias   g='git'
+
+# Git Repo Logging, Add '-{N}' to these commands to see the last N log entries
+# %C=color, %h=commitHash, %ad=AuthorDate, %d=ref names, %s=subject, %cn=committer name
+export gitFormat="%C(yellow)%h %Creset %ad%Cred%d  %Creset%s%Cblue [%cn]"
+alias  gl='g log --pretty=format:"$gitFormat" --decorate --date=relative'
+alias gll='g log --pretty=format:"$gitFormat" --numstat'
+alias glb="g for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+#See all the commits related to a file, with the diff of the changes
+alias gfilelog='g log -u'
+alias gfl='gfilelog'
+
+#See the diff of the last commit
+alias gdlc='g diff --cached HEAD^'
+
+#Get diff of a revision
+function gdr() { g diff "$1"^.."$1"; }
+
+#Get the long listing of a commit revision
+function glc() { gll "$1"^.."$1"; }
