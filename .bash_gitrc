@@ -10,11 +10,17 @@ alias gfff='gff finish'
 alias gb='git branch -vv'
 alias gc='git checkout'
 alias gf='git fetch --prune -v'
+alias gmso='git merge --strategy-option ours'
+alias gmst='git merge --strategy-option theirs'
 alias gprune='git remote prune origin'
 alias gp='git pull'
 alias gr="git checkout --" #Git 'Revert'
 alias gs='git status'
 alias gu='git reset --soft HEAD~' #Undo commits made on current branch (preserve changes)
+
+#Git Modules - http://blog.jacius.info/git-submodule-cheat-sheet/
+alias gmodi='git submodule update --init' #Git Module Init (pull repo content for all modules)
+
 
 # Git Repo Logging, Add '-{N}' to these commands to see the last N log entries
 # %C=color, %h=commitHash, %ad=AuthorDate, %d=ref names, %s=subject, %cn=committer name
