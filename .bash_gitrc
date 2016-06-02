@@ -1,4 +1,4 @@
-alias   g='git'
+alias   g='hub'
 
 #Git Flow
 alias gff='git flow feature'
