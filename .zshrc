@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/nate/.oh-my-zsh
-DEFAULT_USER="nate"
+export ZSH=~/.oh-my-zsh
+DEFAULT_USER=`whoami`
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,7 +55,6 @@ plugins=(git hub brew docker vagrant npm osx)
 
 # User configuration
 
-export PATH="/usr/local/lib/dnx/runtimes/dnx-coreclr-darwin-x64.1.0.0-rc1-update1/bin:/Users/nate/.dnx/bin:/Users/nate/development/software/apache-maven-3.1.1/bin:/opt/subversion/bin:/Users/nate/.node/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
