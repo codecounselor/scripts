@@ -39,7 +39,7 @@ else
   cd $scriptDir; git pull
 fi
 
-links=( ".bash_gitrc" ".zshrc" ".vim" ".vimrc" )
+links=( ".bash_gitrc" ".zshrc" ".vim" ".vimrc" ".naterc")
 for link in "${links[@]}"
 do
   echo "Linking $link"
@@ -47,11 +47,13 @@ do
 done
 
 CASKS=(
-  Caskroom/cask/menumeters
-  Caskroom/cask/iterm2
-  Caskroom/cask/google-chrome
-  Caskroom/cask/atom
-  Caskroom/cask/webstorm
-  Caskroom/cask/slack
+  menumeters
+  iterm2
+  google-chrome
+  atom
+  webstorm
+  slack
+  java
+  mysqlworkbench
 )
-brew install ${CASKS[@]}
+brew cask install ${CASKS[@]}

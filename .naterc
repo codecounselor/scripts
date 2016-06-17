@@ -1,0 +1,11 @@
+. ~/.privaterc
+
+# Sencha Stuff
+if [ -d /opt/Sencha/Cmd ] ; then
+  export PATH="/opt/Sencha/Cmd:$PATH"
+fi
+
+# Aliases 
+alias v=vagrant
+
+
