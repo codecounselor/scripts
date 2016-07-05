@@ -10,7 +10,7 @@ else
 fi
 
 #Get basic stuff
-brew install git hub cloc gnu-tar htop tmux wget zsh-completions
+brew install git hub cloc gnu-tar htop tmux wget zsh-completions the_silver_searcher
 
 #Get the latest Python 2 Version
 brew install python
@@ -39,16 +39,18 @@ else
   cd $scriptDir; git pull
 fi
 
-links=( ".bash_gitrc" ".zshrc" ".vim" ".vimrc" ".naterc")
+cd ~
+links=( ".bash_gitrc" ".zshrc" ".vim" ".vimrc" ".naterc" "slate/.slate")
 for link in "${links[@]}"
 do
   echo "Linking $link"
-  ln -F -s $scriptDir/$link ~/$link
+  ln -F -s $scriptDir/$link .
 done
 
 CASKS=(
   menumeters
   iterm2
+  slate
   google-chrome
   atom
   webstorm

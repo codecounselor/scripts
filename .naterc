@@ -5,7 +5,10 @@ if [ -d /opt/Sencha/Cmd ] ; then
   export PATH="/opt/Sencha/Cmd:$PATH"
 fi
 
-# Aliases 
+# Aliases
+alias s=sencha
 alias v=vagrant
 
-
+# silver searcher (brew install the_silver_searcher)
+alias f="ag -g"
+alias r=ag

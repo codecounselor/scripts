@@ -83,3 +83,5 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # For a full list of active aliases, run `alias`.
 source ~/.bash_gitrc
 source ~/.naterc
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

@@ -1,0 +1,75 @@
+----------------- Screens -----------------
+Left To Right ID: 0
+  OS X ID: 0
+  Resolution: 1920x1200
+Left To Right ID: 1
+  OS X ID: 1
+  Resolution: 3008x1692
+
+----------------- Windows -----------------
+
+Application: Finder
+
+Application: Mail
+  Window: 'Inbox (63 messages, 19 unread)'
+    Screen ID (Left to Right): 0
+    Size: (1404, 815)
+    Top Left: (screenOriginX+426, screenOriginY+0)
+
+Application: Atom
+  Window: 'bootstrap-osx.sh — /Users/cc/projects/codecounselor'
+    Screen ID (Left to Right): 1
+    Size: (1316, 626)
+    Top Left: (screenOriginX+1692, screenOriginY+1044)
+
+Application: MySQLWorkbench
+  Window: 'MySQL Workbench'
+    Screen ID (Left to Right): 1
+    Size: (2068, 1043)
+    Top Left: (screenOriginX+940, screenOriginY+0)
+
+Application: Slack
+  Window: 'Slack'
+    Screen ID (Left to Right): 1
+    Size: (940, 1043)
+    Top Left: (screenOriginX+0, screenOriginY+0)
+
+Application: iTerm2
+  Window: '1. vi ~/.slate (vim)'
+    Screen ID (Left to Right): 0
+    Size: (1914, 1127)
+    Top Left: (screenOriginX+0, screenOriginY+0)
+
+Application: Skype
+  Window: 'Skype'
+    Screen ID (Left to Right): 1
+    Size: (752, 626)
+    Top Left: (screenOriginX+0, screenOriginY+1044)
+
+Application: HipChat
+  Window: 'HipChat'
+    Screen ID (Left to Right): 1
+    Size: (940, 626)
+    Top Left: (screenOriginX+752, screenOriginY+1044)
+
+Application: Activity Monitor
+  Window: 'Activity Monitor (Windowed Processes)'
+    Screen ID (Left to Right): 0
+    Size: (1077, 683)
+    Top Left: (screenOriginX+826, screenOriginY+88)
+
+Application: IntelliJ IDEA
+  Window: 'examples/…/WebMvcConfig.java - spring-security-oauth-parent - [~/projects/spring/spring-security-oauth]'
+    Screen ID (Left to Right): 0
+    Size: (1680, 978)
+    Top Left: (screenOriginX+0, screenOriginY+0)
+  Window: 'FlexAuthenticationProvider.java - flex5 - [~/projects/flex/flex-production-manager]'
+    Screen ID (Left to Right): 0
+    Size: (1680, 978)
+    Top Left: (screenOriginX+0, screenOriginY+0)
+
+Application: Google Chrome
+  Window: 'Using Slate: A Hacker's Window Manager for Macs - Tristan Hume'
+    Screen ID (Left to Right): 0
+    Size: (1333, 1128)
+    Top Left: (screenOriginX+429, screenOriginY+0)
