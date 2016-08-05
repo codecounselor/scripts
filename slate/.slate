@@ -47,5 +47,5 @@ bind down:cmd;alt focus behind
 # Window Hints
 bind esc:cmd hint
 
-bind g:cmd grid padding:5 0:6,3 1:16,8
-
+#bind g:cmd grid padding:5 0:6,3 1:16,8
+bind g:cmd grid padding:5 1:6,3 0:16,16

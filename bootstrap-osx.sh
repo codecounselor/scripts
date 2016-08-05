@@ -48,14 +48,14 @@ do
 done
 
 CASKS=(
-  menumeters
+#  menumeters
   iterm2
   slate
-  google-chrome
+#  google-chrome
   atom
   webstorm
-  slack
-  java
-  mysqlworkbench
+#  slack
+#  java
+#  mysqlworkbench
 )
 brew cask install ${CASKS[@]}

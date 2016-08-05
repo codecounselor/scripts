@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias   g='hub'
 
 #Git Flow
@@ -13,6 +15,9 @@ alias gf='git fetch --prune -v'
 alias gmso='git merge --strategy-option ours'
 alias gmst='git merge --strategy-option theirs'
 alias gprune='git remote prune origin'
+function listLocalBranches() { g fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' }
+alias gdeletelocalbranches="listLocalBranches | xargs git branch -d"
+alias gdeletelocalbranchesFORCED="listLocalBranches | xargs git branch -D"
 alias gp='git pull'
 alias gr="git checkout --" #Git 'Revert'
 alias gs='git status'
@@ -41,5 +46,3 @@ function gdr() { g diff "$1"^.."$1"; }
 
 #Get the long listing of a commit revision
 function glc() { gll "$1"^.."$1"; }
-
-
