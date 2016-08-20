@@ -8,7 +8,7 @@ BRANCH_NAME=`git symbolic-ref --short HEAD` || 2>/dev/null
 
 # Expects a commit message of the form: {prefix}-{issueNumber}-{message}
 ISSUE_NUMBER=`echo $BRANCH_NAME | cut -d "-" -f 2`
-echo "Branch: $BRANCH_NAME, Issue: $ISSUE_NUMBER"
+echo "prepare-commit-msg hook:: Branch=$BRANCH_NAME, Issue=$ISSUE_NUMBER"
 
 # This way you can customize which branches should be skipped when prepending commit message.
 if [ -z "$BRANCHES_TO_SKIP" ]; then
@@ -23,7 +23,9 @@ if [ -n "$BRANCH_NAME" ] && ! [[ $BRANCH_EXCLUDED -eq 1 ]] && ! [[ $BRANCH_IN_CO
   # find one occurnce (the end of the line) and add '#issue'
   # This allows git keywords (i.e. fixes) to prefix the issue number
   sed -i.bak -e "1s/$/ #${ISSUE_NUMBER}/" $COMMIT_MESSAGE_FILE
-  echo "Your neighborhood git hook just appended issue number ($ISSUE_NUMBER) to your commit message"
+  echo "prepare-commit-msg hook:: appended issue number ($ISSUE_NUMBER) to your commit message"
+else
+  echo "prepare-commit-msg hook:: exclusion rule triggered, no issue number appended"
 fi
 
 # Handy Dandy Links
