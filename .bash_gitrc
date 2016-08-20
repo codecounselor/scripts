@@ -11,10 +11,20 @@ alias gfff='gff finish'
 #Basic Git Commands
 alias gb='git branch -vv'
 alias gc='git checkout'
+
+#Diff
+alias gd='g diff'
+alias gds='gd --staged'
+
+
 alias gf='git fetch --prune -v'
 alias gmso='git merge --strategy-option ours'
 alias gmst='git merge --strategy-option theirs'
 alias gprune='git remote prune origin'
+
+
+
+#Branch Management
 function listLocalBranches() { g fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' }
 alias gdeletelocalbranches="listLocalBranches | xargs git branch -d"
 alias gdeletelocalbranchesFORCED="listLocalBranches | xargs git branch -D"
