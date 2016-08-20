@@ -1,13 +1,25 @@
 . ~/.privaterc
 
+ulimit -u 1024
+
 # Sencha Stuff
 if [ -d /opt/Sencha/Cmd ] ; then
   export PATH="/opt/Sencha/Cmd:$PATH"
 fi
 
 # Aliases
+alias d=docker
+alias ll="ls -alh"
 alias s=sencha
+alias sl="du -hd 1"
 alias v=vagrant
+
+alias ports='sudo lsof -iTCP -sTCP:LISTEN -n -P'
+
+# Docker
+alias ds="d ps"
+alias dsa="ds -a"
+alias dl="d images"
 
 # silver searcher (brew install the_silver_searcher)
 alias f="ag -g"
