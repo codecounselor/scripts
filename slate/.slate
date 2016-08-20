@@ -24,8 +24,10 @@ bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
 # Nudge Bindings
 bind right:shift;alt nudge +10% +0
 bind left:shift;alt  nudge -10% +0
-bind up:shift;alt    nudge +0   -10%
-bind down:shift;alt  nudge +0   +10%
+
+# Conflicts with intellij move up/down
+#bind up:shift;alt    nudge +0   -10%
+#bind down:shift;alt  nudge +0   +10%
 
 # Throw Bindings
 bind 1:ctrl;alt         throw 0 resize
@@ -37,8 +39,8 @@ bind up:ctrl;alt;cmd    throw up    resize
 bind down:ctrl;alt;cmd  throw down  resize
 
 # Focus Bindings
-bind right:cmd    focus right
-bind left:cmd     focus left
+#bind right:cmd    focus right
+#bind left:cmd     focus left
 bind up:cmd       focus up
 bind down:cmd     focus down
 bind up:cmd;alt   focus behind
@@ -48,4 +50,11 @@ bind down:cmd;alt focus behind
 bind esc:cmd hint
 
 #bind g:cmd grid padding:5 0:6,3 1:16,8
-bind g:cmd grid padding:5 1:6,3 0:16,16
+#bind g:cmd grid padding:5 1:6,3 0:16,16
+bind g:cmd grid padding:0 0:16,16 1:16,16 2:16,16
+
+
+bind 1:ctrl;shift snapshot workLayout save-to-disk
+bind 1:ctrl activate-snapshot workLayout 
+
+
