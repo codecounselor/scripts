@@ -12,10 +12,11 @@ echo "prepare-commit-msg hook:: Branch=$BRANCH_NAME, Issue=$ISSUE_NUMBER"
 
 # This way you can customize which branches should be skipped when prepending commit message.
 if [ -z "$BRANCHES_TO_SKIP" ]; then
-  BRANCHES_TO_SKIP=(master develop)
+  BRANCHES_TO_SKIP="master develop"
 fi
 
-BRANCH_EXCLUDED=$(printf "%s\n" "${BRANCHES_TO_SKIP[@]}" | grep -c "^$BRANCH_NAME$")
+SKIP_BRANCH_ARRAY=($BRANCHES_TO_SKIP)
+BRANCH_EXCLUDED=$(printf "%s\n" "${SKIP_BRANCH_ARRAY[@]}" | grep -c "^$BRANCH_NAME$")
 BRANCH_IN_COMMIT=$(grep -c "\[$BRANCH_NAME\]" "$COMMIT_MESSAGE_FILE")
 
 if [ -n "$BRANCH_NAME" ] && ! [[ $BRANCH_EXCLUDED -eq 1 ]] && ! [[ $BRANCH_IN_COMMIT -ge 1 ]]; then
