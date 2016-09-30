@@ -9,8 +9,15 @@ alias gffp='gff publish'
 alias gfff='gff finish'
 
 #Basic Git Commands
-alias gb='git branch -vv'
-alias gc='git checkout'
+alias gb='g branch -vv'
+alias gc='g checkout'
+alias gci='g commit'
+alias gcommend='g commit --amend --no-edit'
+
+#Stashing
+alias gtsh='stash --keep-index'           #stash only unstaged changes to tracked files
+alias gstaash='stash --include-untracked' #stash untracked AND tracked files
+alias sstaaash='stash --all'              #stash ignored, untracked, and tracked files
 
 #Diff
 alias gd='g diff'
@@ -28,9 +35,10 @@ alias gprune='git remote prune origin'
 function listLocalBranches() { g fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' }
 alias gdeletelocalbranches="listLocalBranches | xargs git branch -d"
 alias gdeletelocalbranchesFORCED="listLocalBranches | xargs git branch -D"
-alias gp='git pull'
+alias gp='git pull --ff-only' #--ff-only prevents a pull if it requires a merge or rebase
 alias gr="git checkout --" #Git 'Revert'
 alias gs='git status'
+alias gss='gs --short --branch'
 alias gu='git reset --soft HEAD~' #Undo commits made on current branch (preserve changes)
 
 #Git Modules - http://blog.jacius.info/git-submodule-cheat-sheet/

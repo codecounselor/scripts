@@ -6,10 +6,10 @@ config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
 # Resize Bindings
-bind right:alt       resize +10% +0
-bind left:alt        resize -10% +0
-bind up:alt          resize +0   -10%
-bind down:alt        resize +0   +10%
+#bind right:alt       resize +10% +0
+#bind left:alt        resize -10% +0
+#bind up:alt          resize +0   -10%
+#bind down:alt        resize +0   +10%
 bind right:ctrl;alt  resize -10% +0 bottom-right
 bind left:ctrl;alt   resize +10% +0 bottom-right
 bind up:ctrl;alt     resize +0   +10% bottom-right
@@ -41,10 +41,10 @@ bind down:ctrl;alt;cmd  throw down  resize
 # Focus Bindings
 #bind right:cmd    focus right
 #bind left:cmd     focus left
-bind up:cmd       focus up
-bind down:cmd     focus down
-bind up:cmd;alt   focus behind
-bind down:cmd;alt focus behind
+#bind up:cmd       focus up
+#bind down:cmd     focus down
+#bind up:cmd;alt   focus behind
+#bind down:cmd;alt focus behind
 
 # Window Hints
 bind esc:cmd hint
@@ -56,5 +56,7 @@ bind g:cmd grid padding:0 0:16,16 1:16,16 2:16,16
 
 bind 1:ctrl;shift snapshot workLayout save-to-disk
 bind 1:ctrl activate-snapshot workLayout 
+bind 2:ctrl;shift snapshot laptopLayout save-to-disk
+bind 2:ctrl activate-snapshot laptopLayout
 
 

@@ -59,3 +59,5 @@ CASKS=(
 #  mysqlworkbench
 )
 brew cask install ${CASKS[@]}
+
+npm install -g j-unquote j-quote
