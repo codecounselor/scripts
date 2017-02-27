@@ -60,4 +60,8 @@ CASKS=(
 )
 brew cask install ${CASKS[@]}
 
-npm install -g j-unquote j-quote
+# Useful Utilities
+npm install -g j-unquote j-quote 
+
+# JS Development Things
+npm install -g standard snazzy

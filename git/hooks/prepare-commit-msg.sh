@@ -24,7 +24,9 @@ if [ -n "$BRANCH_NAME" ] && ! [[ $BRANCH_EXCLUDED -eq 1 ]] && ! [[ $BRANCH_IN_CO
   # find one occurnce (the end of the line) and add '#issue'
   # This allows git keywords (i.e. fixes) to prefix the issue number
   sed -i.bak -e "1s/$/ #${ISSUE_NUMBER}/" $COMMIT_MESSAGE_FILE
-  echo "prepare-commit-msg hook:: appended issue number ($ISSUE_NUMBER) to your commit message"
+  # Add it to the beginning too for better readability
+  sed -i -e "1s/^/#${ISSUE_NUMBER} /" $COMMIT_MESSAGE_FILE
+  echo "prepare-commit-msg hook:: injected issue number ($ISSUE_NUMBER) into your commit message"
 else
   echo "prepare-commit-msg hook:: exclusion rule triggered, no issue number appended"
 fi

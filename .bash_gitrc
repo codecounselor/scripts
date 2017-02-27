@@ -13,11 +13,13 @@ alias gb='g branch -vv'
 alias gc='g checkout'
 alias gci='g commit'
 alias gcommend='g commit --amend --no-edit'
+alias gt='g tag -a'
+alias gpush='g push --follow-tags'
 
 #Stashing
-alias gtsh='stash --keep-index'           #stash only unstaged changes to tracked files
-alias gstaash='stash --include-untracked' #stash untracked AND tracked files
-alias sstaaash='stash --all'              #stash ignored, untracked, and tracked files
+alias gtsh='g stash --keep-index'           #stash only unstaged changes to tracked files
+alias gstaash='g stash --include-untracked' #stash untracked AND tracked files
+alias sstaaash='g stash --all'              #stash ignored, untracked, and tracked files
 
 #Diff
 alias gd='g diff'
@@ -40,6 +42,11 @@ alias gr="git checkout --" #Git 'Revert'
 alias gs='git status'
 alias gss='gs --short --branch'
 alias gu='git reset --soft HEAD~' #Undo commits made on current branch (preserve changes)
+
+## Rebasing
+alias grc='g rebase --continue'
+alias gra='g rebase --abort'
+alias grs='g rebase --skip'
 
 #Git Modules - http://blog.jacius.info/git-submodule-cheat-sheet/
 alias gmodi='git submodule update --init' #Git Module Init (pull repo content for all modules)

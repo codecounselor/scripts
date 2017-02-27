@@ -7,19 +7,30 @@ if [ -d /opt/Sencha/Cmd ] ; then
   export PATH="/opt/Sencha/Cmd:$PATH"
 fi
 
+# Go
+export GOPATH=$HOME/projects/go
+
+# MySQL
+alias mysqlStart="sudo /usr/local/mysql/support-files/mysql.server start"
+alias mysqlStop="sudo /usr/local/mysql/support-files/mysql.server stop"
+alias mysqlTail="sudo tail -f /usr/local/mysql/data/mysqld.local.err"
+
 # Aliases
-alias d=docker
 alias ll="ls -alh"
 alias s=sencha
 alias sl="du -hd 1"
 alias v=vagrant
+alias standard="standard --verbose | snazzy"
 
 alias ports='sudo lsof -iTCP -sTCP:LISTEN -n -P'
 
 # Docker
+alias d="docker"
+alias di="d images"
 alias ds="d ps"
 alias dsa="ds -a"
 alias dl="d images"
+alias dr="d rm -v"
 
 # silver searcher (brew install the_silver_searcher)
 alias f="ag -g"
