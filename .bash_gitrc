@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias   g='hub'
+alias   g='git' #'hub'
 
 #Git Flow
 alias gff='git flow feature'
@@ -61,6 +61,9 @@ export gitFormat="%C(yellow)%h %Creset %ad%Cred%d  %Creset%s%Cblue [%cn]"
 alias  gl='g log --pretty=format:"$gitFormat" --decorate --date=relative'
 alias gll='g log --pretty=format:"$gitFormat" --numstat'
 alias glb="g for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+#https://stackoverflow.com/a/9074343
+alias glg="g log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 #See all the commits related to a file, with the diff of the changes
 alias gfilelog='g log -u'
