@@ -20,6 +20,9 @@ alias gpush='g push --follow-tags'
 alias gtsh='g stash --keep-index'           #stash only unstaged changes to tracked files
 alias gstaash='g stash --include-untracked' #stash untracked AND tracked files
 alias sstaaash='g stash --all'              #stash ignored, untracked, and tracked files
+alias gstashLast='g show stash@{0}'
+alias gstashList='g stash list --date=local'
+alias gstashPretty='g stash list --pretty=format:"%C(red)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %<(70,trunc)%s %C(green)(%cr) %C(bold blue)<%an>%C(reset)"'
 
 #Diff
 alias gd='g diff'
@@ -71,3 +74,7 @@ function gdr() { g diff "$1"^.."$1"; }
 
 #Get the long listing of a commit revision
 function glc() { gll "$1"^.."$1"; }
+
+#Create a branch for an issue
+function gbi() { gc -b issue-$1; }
+
