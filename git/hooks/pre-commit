@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+
+if [[ "$BRANCH" == "master" || "$BRANCH" == release* ]]; then
+	echo "You are on branch $BRANCH. Are you sure you want to commit to this branch?"
+	echo "If so, commit with -n to bypass this pre-commit hook."
+	exit 1
+fi
+
+# Would be better to do this maybe: https://gist.github.com/carlos-jenkins/89da9dcf9e0d528ac978311938aade43
+.git/hooks/prevent-focused-tests.sh
