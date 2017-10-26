@@ -11,6 +11,8 @@ fi
 
 #Get basic stuff
 brew install git hub cloc gnu-tar htop tmux wget zsh-completions the_silver_searcher
+# Get the GNU versions of this stuff (cause OS X versions are terrible)
+brew install coreutils findutils grep --with-default-names
 
 #Get the latest Python 2 Version
 brew install python
@@ -61,7 +63,7 @@ CASKS=(
 brew cask install ${CASKS[@]}
 
 # Useful Utilities
-npm install -g j-unquote j-quote 
+npm install -g j-unquote j-quote
 
 # JS Development Things
 npm install -g standard snazzy
