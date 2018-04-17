@@ -38,5 +38,3 @@ alias r=ag
 
 alias mailhog="d run --rm -p 1025:1025 -p 8025:8025 mailhog/mailhog"
 
-export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
