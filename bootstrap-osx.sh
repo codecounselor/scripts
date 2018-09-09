@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~
+
 # Check if Homebrew is installed
 which -s brew
 if [[ $? != 0 ]] ; then
@@ -51,16 +53,16 @@ done
 
 CASKS=(
 #  menumeters
-  iterm2
-  slate
+#  iterm2
+#  slate
 #  google-chrome
-  atom
-  webstorm
+#  atom
+#  webstorm
 #  slack
 #  java
 #  mysqlworkbench
 )
-brew cask install ${CASKS[@]}
+# brew cask install ${CASKS[@]}
 
 # Useful Utilities
 npm install -g j-unquote j-quote

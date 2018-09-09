@@ -1,5 +1,3 @@
-. ~/.privaterc
-
 ulimit -u 1024
 
 # Sencha Stuff
@@ -20,12 +18,12 @@ alias ll="ls -alh"
 alias s=sencha
 alias sl="du -hd 1"
 alias v=vagrant
-alias standard="standard --verbose | snazzy"
+#alias standard="standard --verbose | snazzy"
 
 alias ports='sudo lsof -iTCP -sTCP:LISTEN -n -P'
 
 # Docker
-alias d="docker"
+alias d="sudo docker"
 alias di="d images"
 alias ds="d ps"
 alias dsa="ds -a"
@@ -38,3 +36,4 @@ alias r=ag
 
 alias mailhog="d run --rm -p 1025:1025 -p 8025:8025 mailhog/mailhog"
 
+ ~/.privaterc
