@@ -17,7 +17,7 @@ alias gt='g tag -a'
 alias gpush='g push --follow-tags'
 
 #Stashing
-alias gtsh='g stash --keep-index'           #stash only unstaged changes to tracked files
+alias gstash='g stash --keep-index'         #stash only unstaged changes to tracked files
 alias gstaash='g stash --include-untracked' #stash untracked AND tracked files
 alias sstaaash='g stash --all'              #stash ignored, untracked, and tracked files
 alias gstashLast='g show stash@{0}'
@@ -40,7 +40,8 @@ alias gprune='git remote prune origin'
 function listLocalBranches() { g fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' }
 alias gdeletelocalbranches="listLocalBranches | xargs git branch -d"
 alias gdeletelocalbranchesFORCED="listLocalBranches | xargs git branch -D"
-alias gp='git pull --ff-only' #--ff-only prevents a pull if it requires a merge or rebase
+alias gpull='git pull --ff-only' #--ff-only prevents a pull if it requires a merge or rebase
+alias gpush='git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`' # creates the remote branch
 alias gr="git checkout --" #Git 'Revert'
 alias gs='git status'
 alias gss='gs --short --branch'
