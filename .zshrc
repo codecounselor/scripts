@@ -81,8 +81,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#source ~/.bash_gitrc
-source /Users/nate/projects/jug/jug-git/.gitrc
+source ~/.bash_gitrc
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
