@@ -1,9 +1,14 @@
+#!/bin/bash
+
 ulimit -u 1024
 
 # Sencha Stuff
 if [ -d /opt/Sencha/Cmd ] ; then
   export PATH="/opt/Sencha/Cmd:$PATH"
 fi
+
+# GNU coreutils are better than what mac gives you
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Go
 export GOPATH=$HOME/projects/go
@@ -34,7 +39,16 @@ alias dr="d rm -v"
 alias f="ag -g"
 alias r=ag
 
+alias k="kubectl"
+alias m="minikube"
+
 alias mailhog="d run --rm -p 1025:1025 -p 8025:8025 mailhog/mailhog"
+
+# tomcats
+function tomcatPid() { ps -ef | grep "org.apache.catalina.startup.Bootstrap" | grep "tomcat8_$1" | awk '{print $2}'; }
+
+# AWS CLI
+
 
 . ~/.privaterc
 
