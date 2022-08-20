@@ -51,8 +51,9 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(hub git brew ansible docker vagrant npm osx)
-
+#disabled: ansible vagrant aws npm
+plugins=(git brew docker macos spotify)
+zplug "lib/*",   from:oh-my-zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -87,7 +88,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 export NVM_DIR="$HOME/.nvm"
 source "$(brew --prefix nvm)/nvm.sh"
-nvm use 8
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -115,3 +115,9 @@ load-nvmrc
 
 source ~/.naterc
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /Users/nategood/Downloads/vault/vault vault
+complete -C aws_completer aws
+
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"

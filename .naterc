@@ -8,7 +8,7 @@ if [ -d /opt/Sencha/Cmd ] ; then
 fi
 
 # GNU coreutils are better than what mac gives you
-PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/bin:/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # Go
 export GOPATH=$HOME/projects/go
@@ -49,6 +49,6 @@ function tomcatPid() { ps -ef | grep "org.apache.catalina.startup.Bootstrap" | g
 
 # AWS CLI
 
-
+#. ~/.spider-shell/.spiderrc
+. ~/projects/spider/spider-shell/.spiderrc
 . ~/.privaterc
-

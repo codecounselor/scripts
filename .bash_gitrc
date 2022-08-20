@@ -15,6 +15,7 @@ alias gci='g commit'
 alias gcommend='g commit --amend --no-edit'
 alias gt='g tag -a'
 alias gpush='g push --follow-tags'
+alias gtp='git fetch origin --tags --force --prune --prune-tags'
 
 #Stashing
 alias gstash='g stash --keep-index'         #stash only unstaged changes to tracked files
@@ -40,12 +41,27 @@ alias gprune='git remote prune origin'
 function listLocalBranches() { g fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' }
 alias gdeletelocalbranches="listLocalBranches | xargs git branch -d"
 alias gdeletelocalbranchesFORCED="listLocalBranches | xargs git branch -D"
+alias gdb="listLocalBranches | xargs git branch -D"
 alias gpull='git pull --ff-only' #--ff-only prevents a pull if it requires a merge or rebase
 alias gpush='git push --set-upstream origin `git rev-parse --abbrev-ref HEAD`' # creates the remote branch
+alias forcePush='gpush --force-with-lease'
 alias gr="git checkout --" #Git 'Revert'
 alias gs='git status'
 alias gss='gs --short --branch'
 alias gu='git reset --soft HEAD~' #Undo commits made on current branch (preserve changes)
+
+# Tags
+function listTags() { git tag -l "$1*" }
+# https://gist.github.com/shsteimer/7257245#gistcomment-2623569
+function deleteRemoteTags() { git push -d origin $(listTags $1) }
+function deleteLocalTags() { git tag -d $(listTags $1) }
+function deleteTags() {
+  echo "Deleting remote tags..."
+  deleteRemoteTags $1
+  echo "Deleting local tags..."
+  deleteLocalTags $1
+}
+alias pruneTags='git fetch origin --tags --force --prune --prune-tags'
 
 ## Rebasing
 alias grc='g rebase --continue'
@@ -58,13 +74,17 @@ alias gmodi='git submodule update --init' #Git Module Init (pull repo content fo
 
 # Git Repo Logging, Add '-{N}' to these commands to see the last N log entries
 # %C=color, %h=commitHash, %ad=AuthorDate, %d=ref names, %s=subject, %cn=committer name
+commonLogOpts="--no-merges"
 export gitFormat="%C(yellow)%h %Creset %ad%Cred%d  %Creset%s%Cblue [%cn]"
-alias  gl='g log --pretty=format:"$gitFormat" --decorate --date=relative'
-alias gll='g log --pretty=format:"$gitFormat" --numstat'
+alias  gl='g log $commonLogOpts --pretty=format:"$gitFormat" --decorate --date=relative'
+alias glm='gl --max-parents=2'
+alias gll='g log $commonLogOpts --pretty=format:"$gitFormat" --numstat'
+# log branches
 alias glb="g for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
 #https://stackoverflow.com/a/9074343
-alias glg="g log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+# log the graph
+alias glg="g log $commonLogOpts --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 #See all the commits related to a file, with the diff of the changes
 alias gfilelog='g log -u'
@@ -82,42 +102,3 @@ function glc() { gll "$1"^.."$1"; }
 
 #Create a branch for an issue
 function gbi() { gc -b issue-$1; }
-
-function createPR() {
-  branch=''
-  draftFlag=''
-  verbose='false'
-
-  function printUsage() {
-    echo "Usage: createPR -b <base branch>"
-    echo "options:"
-    echo "  -d (create draft PR)"
-  }
-
-  while getopts 'b:dv' flag; do
-    case "${flag}" in
-      b) branch="$OPTARG" ;;
-      d) draftFlag='-d' ;;
-      v) verbose='true' ;;
-      *) echo "Unexpected option ${flag}"; printUsage; return 1 ;;
-    esac
-  done
-
-  baseBranch=$branch
-  if [ -z "$baseBranch" ]; then
-    baseBranch=$SPIDER_BASE_BRANCH
-  fi
-  if [ -z "$baseBranch" ]; then
-    printUsage
-    return 1
-  fi
-
-  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-  ISSUE_NUMBER=`echo $BRANCH_NAME | cut -d "-" -f 2`
-
-  # --fill uses the commit message to populate the PR title
-  # --body is empty by default, so we need to specify that
-  # --base defaults to the project's base branch, so it's better to mandate we pass it here
-  gh pr create --fill --body "Fixes #${ISSUE_NUMBER}" --base ${baseBranch} $draftFlag
-
-}
