@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+# ADB Stuff
+
+# List connected devices including details (e.g. the deviceId)
+alias adbl='adb devices -l'
+
+# Tail ADB logs but only show WARN+ events, optionally filter on PID
+function adbwarnid { # args = deviceId, pid
+  adblogfn $1 "*:W" $2
+}
+
+# Tail ADB logs at DEBUG, optionally filter on PID
+function adblogid { # args = deviceId, pid
+  adblogfn $1 "*" $2
+}
+
+function adblogfn {
+  echo "here"
+  cmd="adb -t $1 logcat $2"
+  if [ "$3" ]; then
+    cmd="$cmd --pid=$3"
+  fi
+  echo "cmd: $cmd"
+  eval "$cmd"
+}
+
+# Lunchbox
+
+alias lunchbox-dev=/Users/nate.good/Toast/git-repos/lunchbox/.venv/bin/lunchbox
+alias lrs="lunchbox remote start web idm orders-cloud-sync devices ccprocessing loyalty networks -u -l orders -l cloud-sync -l order-sync-pipeline -l sync-mgmt"
+alias lrc="lunchbox remote connect"
+alias lrkill="lunchbox remote kill"
+
+# Add this machines IP to the lunchbox EC2 instance's host file pointing it to
+# services.eng.toasttab.com for RMQ when overridden in toastweb cluster config
+function lrhosts() {
+  lunchbox remote exec "echo '`ipconfig getifaddr en0` services.eng.toasttab.com' | sudo tee -a /etc/hosts"
+}
+
+# Toast Mobile Aliases
+
+alias edir="cd ~/Library/Android/sdk/emulator"
+# Launch an AVD with writeable FS (e.g. to modify /system/etc/hosts)
+alias elo15="edir; emulator -avd Elo_15.6 -grpc-use-token -idle-grpc-timeout 300 -writable-system"
+# Install the APK on all connected devices
+alias mobileDeploy="j11; ./gradlew installDevelopmentDebug"
+# Publish local-sync to the local SNAPSHOT repo and print the version to stdout
+alias lsPublish="j11; ./gradlew publishToMavenLocal -i | grep SNAPSHOT"
+
+
+# JDK Stuff
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home
+PATH="$JAVA_HOME/bin:$PATH"

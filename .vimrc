@@ -20,6 +20,8 @@ set showmatch           " highlight matching [{()}]
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
+set mouse=a             " Allow mouse to set cursor position
+
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
@@ -45,9 +47,10 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-call plug#begin('~/.vim/plugged')
+"FIXME
+"call plug#begin('~/.vim/plugged')
 
-Plug 'pangloss/vim-javascript'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'pangloss/vim-javascript'
+"Plug 'nathanaelkane/vim-indent-guides'
 
-call plug#end()
+"call plug#end()

@@ -1,5 +1,7 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+export PATH="/opt/homebrew/bin:$PATH"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export DEFAULT_USER="$(whoami)"
@@ -34,6 +36,8 @@ ZSH_THEME="agnoster"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
+
+zstyle ':completion:*' completer _expand_alias _complete _ignored
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -77,6 +81,7 @@ ZSH_THEME="agnoster"
 #
 # Removed in favor of Fig
 # plugins=(git brew docker macos)
+plugins=(gradle)
 
 # User configuration
 
@@ -144,11 +149,11 @@ source ~/.naterc
 #autoload -U +X bashcompinit && bashcompinit
 #complete -o nospace -C /Users/nategood/Downloads/vault/vault vault
 #complete -C aws_completer aws
-
-export PATH="/opt/homebrew/bin:/usr/local/opt/python@3.8/bin:$PATH"
-
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 
+source /Users/nate.good/.dotfiles/bashrc
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
