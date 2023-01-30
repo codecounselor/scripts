@@ -9,6 +9,9 @@ alias adbl='adb devices -l'
 function adbwarnid { # args = deviceId, pid
   adblogfn $1 "*:W" $2
 }
+function adbinfoid { # args = deviceId, pid
+  adblogfn $1 "*:I" $2
+}
 
 # Tail ADB logs at DEBUG, optionally filter on PID
 function adblogid { # args = deviceId, pid
@@ -16,8 +19,7 @@ function adblogid { # args = deviceId, pid
 }
 
 function adblogfn {
-  echo "here"
-  cmd="adb -t $1 logcat $2"
+  cmd="adb -t $1 logcat '$2' -v color"
   if [ "$3" ]; then
     cmd="$cmd --pid=$3"
   fi
@@ -29,7 +31,7 @@ function adblogfn {
 
 alias lunchbox-dev=/Users/nate.good/Toast/git-repos/lunchbox/.venv/bin/lunchbox
 # Start remote lunchbox instance for OAPI/CS testing, excluding the 4 services to build/debug locally.
-alias lrs="lunchbox remote start web idm orders-cloud-sync devices ccprocessing loyalty networks -u -l orders -l cloud-sync -l order-sync-pipeline -l sync-mgmt"
+alias lrs="lunchbox remote start web idm orders-cloud-sync devices ccprocessing loyalty networks -g -l orders -l cloud-sync -l order-sync-pipeline -l sync-mgmt"
 # Recreates tunnels, starts instance if it's in hibernation
 alias lrc="lunchbox remote connect"
 alias lrkill="lunchbox remote kill"
@@ -46,9 +48,15 @@ alias edir="cd ~/Library/Android/sdk/emulator"
 # Launch an AVD with writeable FS (e.g. to modify /system/etc/hosts)
 alias elo15="edir; emulator -avd Elo_15.6 -grpc-use-token -idle-grpc-timeout 300 -writable-system"
 # Install the APK on all connected devices
-alias mobileDeploy="j11; ./gradlew installDevelopmentDebug"
+alias mobileDeploy="j11; ./gradlew installDevelopmentDebug; date"
 # Publish local-sync to the local SNAPSHOT repo and print the version to stdout
-alias lsPublish="j11; ./gradlew publishToMavenLocal -i | grep SNAPSHOT"
+alias lsPublish="j11; ./gradlew publishToMavenLocal -i | grep SNAPSHOT; date"
+
+# Gradle
+alias gsa="./gradlew spotlessApply"
+
+# Colima
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 
 
 # JDK Stuff

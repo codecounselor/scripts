@@ -49,6 +49,7 @@ alias gr="git checkout --" #Git 'Revert'
 alias gs='git status'
 alias gss='gs --short --branch'
 alias gu='git reset --soft HEAD~' #Undo commits made on current branch (preserve changes)
+alias gpick='git cherry-pick -x'
 
 # Tags
 function listTags() { git tag -l "$1*" }
@@ -75,7 +76,7 @@ alias gmodi='git submodule update --init' #Git Module Init (pull repo content fo
 # Git Repo Logging, Add '-{N}' to these commands to see the last N log entries
 # %C=color, %h=commitHash, %ad=AuthorDate, %d=ref names, %s=subject, %cn=committer name
 commonLogOpts="--no-merges"
-export gitFormat="%C(yellow)%h %Creset %ad%Cred%d  %Creset%s%Cblue [%cn]"
+export gitFormat="%C(yellow)%h %Creset %ad%Cred%d  %Creset%s%Cblue [%an] (%cn)"
 alias  gl='g log $commonLogOpts --pretty=format:"$gitFormat" --decorate --date=relative'
 alias glm='gl --max-parents=2'
 alias gll='g log $commonLogOpts --pretty=format:"$gitFormat" --numstat'

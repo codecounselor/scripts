@@ -39,6 +39,12 @@ alias dsa="ds -a"
 alias dl="d images"
 alias dr="d rm -v"
 
+# Gradlew
+alias gw="./gradlew"
+alias gwt="./gradlew test"
+alias gwr="./gradlew run"
+
+
 # silver searcher (brew install the_silver_searcher)
 alias f="ag -g"
 alias r=ag
