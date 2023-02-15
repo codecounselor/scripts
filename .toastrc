@@ -31,7 +31,7 @@ function adblogfn {
 
 alias lunchbox-dev=/Users/nate.good/Toast/git-repos/lunchbox/.venv/bin/lunchbox
 # Start remote lunchbox instance for OAPI/CS testing, excluding the 4 services to build/debug locally.
-alias lrs="lunchbox remote start web idm orders-cloud-sync devices ccprocessing loyalty networks -g -l orders -l cloud-sync -l order-sync-pipeline -l sync-mgmt"
+alias lrs="lunchbox remote start web idm orders-cloud-sync pulsar-manager devices ccprocessing loyalty networks -g -l orders -l cloud-sync -l order-sync-pipeline -l sync-mgmt"
 # Recreates tunnels, starts instance if it's in hibernation
 alias lrc="lunchbox remote connect"
 alias lrkill="lunchbox remote kill"
